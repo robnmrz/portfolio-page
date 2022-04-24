@@ -8,11 +8,14 @@
     --clr-light: 210, 17%, 98%;
     --clr-white: 0 0% 100%;
     --clr-black: 0 0% 0%;
+    --clr-second: 0 0% 0%;
 
     /* font-sizes */
     --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem); /* shrinks fontsize based on screensize dynamically*/
     --fs-800: 6.25rem;
     --fs-700: 3.5rem;
+    --fs-650: 2.75rem;
+    --fs-620: 2.35rem;
     --fs-600: 2rem;
     --fs-500: 1.75rem;
     --fs-400: 1.125rem;
@@ -214,7 +217,7 @@ select {
     border: 2px solid hsl(var(--clr-white));
     background-color: hsl(var(--clr-white) / .20);
     color: hsl(var(--clr-white));
-    padding: 10px 30px;
+    padding: 10px 20px;
     cursor: pointer;
     border-radius: 10px;
     text-decoration: none;
@@ -224,6 +227,22 @@ select {
 .btn:hover{
     background-color: hsl(var(--clr-white));
     color: hsl(var(--clr-black));
+}
+
+.btn-secondary {
+    border: 2px solid hsl(var(--clr-second));
+    background-color: hsl(var(--clr-second) / .20);
+    color: hsl(var(--clr-second));
+    padding: 3px 16px;
+    cursor: pointer;
+    border-radius: 7px;
+    text-decoration: none;
+    text-align: left;
+}
+
+.btn-secondary:hover{
+    background-color: hsl(var(--clr-second));
+    color: hsl(var(--clr-white));
 }
 
 .primary-navigation {
@@ -299,6 +318,10 @@ select {
     padding-bottom: 20px;
 }
 
+.stage-title {
+    font-size: var(--fs-650);
+}
+
 /* ------------------------------ */
 /* Layout                         */
 /* ------------------------------ */
@@ -324,17 +347,18 @@ select {
         'title'
         'image'
         'content';
+    padding: 2rem 0;
 }
 
 .grid-container--intro > img {
     grid-area: image;
-    max-width: 75%;
+    max-width: 90%;
     margin: 2rem 0;
 }
 
 .grid-container--intro > h1 {
     grid-area: title;
-    margin-top: 2rem;
+    font-size: var(--fs-600);
 }
 
 .grid-container--intro > .intro-info {
@@ -348,7 +372,41 @@ select {
     margin-top: 2.5rem;
 }
 
-@media (min-width: 45em) {
+/* Skills section layout */
+
+.grid-container--skills {
+    background-color: hsl( var(--clr-white));
+    color: hsl( var(--clr-black));
+    --flow-space: 2rem;
+    grid-template-areas: 
+        'title'
+        'image';
+    padding: 2rem 0;
+}
+
+.grid-container--skills > h1 {
+    grid-area: title;
+}
+
+@media (min-width: 35em) {
+    .grid-container--home > .btn {
+        padding: 2px 0;
+    }
+
+    .grid-container--intro > h1 {
+        font-size: var(--fs-620);
+    }
+    .intro-meta {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .grid-container--intro > img {
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 55em) {
     .grid-container {
         text-align: left;
         column-gap: var(--container-gap, 2rem);
@@ -366,5 +424,27 @@ select {
 
     .grid-container--home > *:last-child {
         grid-column: 3;
+    }
+
+    .grid-container--intro {
+        grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
+        grid-template-areas: 
+            '. image title .'
+            '. image content .';
+    }
+
+    .grid-container--intro > h1 {
+        margin: 0;
+        justify-self: start;
+        font-size: var(--fs-650);
+    }
+
+    .grid-container--intro > .intro-info {
+        justify-self: start;
+    }
+
+    .grid-container--intro > img {
+        justify-self: start;
+        max-width: 75%;
     }
 }
