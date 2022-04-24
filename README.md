@@ -2,7 +2,7 @@
 <p align="left">
   <h1 align="left">Portfolio Page</h1>
   <p align="left">
-    An personal website to collect and showcase existing and future projects.
+    A personal website to collect and showcase existing and future projects.
     <br />
     <br />
     <a href="https://github.com/robnmrz/portfolio-page"><strong>Visit website »</strong></a>
